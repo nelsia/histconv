@@ -1,15 +1,6 @@
 #!/bin/bash
 
-check_args() {
-  if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 <.bash_history_file_path>"
-    echo "Example: $0 ~/.bash_history"
-    exit 1
-  fi
-}
-
-check_args "$@"
-HISTORY_FILE_PATH="$1"
+INPUT_HISTORY="${1:-/dev/stdin}"
 
 awk '
 {
@@ -26,5 +17,5 @@ awk '
             print $0
         }
     }
-}' "$HISTORY_FILE_PATH"
+}' "$INPUT_HISTORY"
 
