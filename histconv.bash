@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -z "$1" ] && [ -t 0 ]; then
+    echo "Usage: $0 <input_file>"
+    exit 1
+fi
+
 INPUT_HISTORY="${1:-/dev/stdin}"
 
 awk '
