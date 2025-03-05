@@ -19,7 +19,7 @@ awk '
         cmd="date -d @" timestamp " \"+%Y-%m-%d %H:%M:%S\""
         cmd | getline formatted_time
         close(cmd)
-    } else {
+    } else if ($0 !~ /^$/) {
         if (formatted_time != "") {
             print formatted_time " " $0
             formatted_time = ""
