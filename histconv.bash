@@ -14,7 +14,7 @@ INPUT_HISTORY="${1:-/dev/stdin}"
 
 awk '
 {
-    if ($0 ~ /^#[0-9]+$/) {
+    if ($0 ~ /^#[0-9]{10,}$/) {
         timestamp = substr($0, 2)
         cmd="date -d @" timestamp " \"+%Y-%m-%d %H:%M:%S\""
         cmd | getline formatted_time
