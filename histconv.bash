@@ -5,6 +5,11 @@ if [ -z "$1" ] && [ -t 0 ]; then
     exit 1
 fi
 
+if [ ! -e "$1" ] && [ -t 0 ]; then
+    echo "File does not exist: ${1}"
+    exit 1
+fi
+
 INPUT_HISTORY="${1:-/dev/stdin}"
 
 awk '
